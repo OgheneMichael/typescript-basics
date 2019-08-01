@@ -1,13 +1,21 @@
 const pizza = {
-	name: "Pepperoni"
+	name: "Pepperoni",
+	toppings: ["pepperoni"]
 };
 
-const toppings = ["Pepperoni"];
+function order({ name: pizzaName, toppings: pizzaToppings }: any) {
+	return { pizzaName, pizzaToppings };
+}
 
-const order = Object.assign({}, pizza, {
-	toppings
-});
+const { pizzaName } = order(pizza);
+console.log(pizzaName);
 
-const spreadOrder = { ...pizza, toppings };
+const toppings = ["pepperoni", "bacon", "chilli"];
 
-console.log(order, spreadOrder);
+const [first, second, third] = toppings;
+
+function logToppings([first, second, third]: any) {
+	console.log(first, second, third);
+}
+
+logToppings(toppings);
